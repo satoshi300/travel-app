@@ -13,26 +13,26 @@
 // ./src/index.html
 // ./src/js/client.js
 // ./src/css/client.css
-
 import './../css/client.css';
 
 import ExcursionsAPI from './ExcursionsAPI';
 const excursions = new ExcursionsAPI();
 
-const apiOrderUrl = 'http://localhost:3000/orders';
+const apiExcUrl = 'http://localhost:3000/excursions';
 
-console.log('client');
+
 document.addEventListener('DOMContentLoaded', init);
-
-
-
 
 
 function init() {
     console.log('DOM');
-    // insertExcursionsClient();
-    // excursions.loadData();
-
+    excursions.loadDataClient();
+    // loadExcursions();
+    // removeExcursions();
+    // excursions.insertExcursions();
 }
+
+
+
 
 

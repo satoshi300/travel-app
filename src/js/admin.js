@@ -27,7 +27,7 @@ form.addEventListener('submit', addExcursion)
 
 function init() {
     console.log('DOM');
-    excursions.loadData();
+    excursions.loadDataAdmin();
     removeExcursions();
     // excursions.insertExcursions();
 }
