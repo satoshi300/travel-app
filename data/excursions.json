@@ -1,4 +1,40 @@
 {
-    "excursions": [],
-    "orders": []
+  "excursions": [
+    {
+      "title": "Zwiedzanie Krakowa",
+      "description": "Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore ",
+      "adultsPrice": 50,
+      "childrenPrice": 25,
+      "id": 4
+    },
+    {
+      "title": "Zwiedzanie Warszawy",
+      "description": "Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore ",
+      "adultsPrice": 20,
+      "childrenPrice": 30,
+      "id": 6
+    },
+    {
+      "title": "Zwiedzanie Gdyni",
+      "description": "Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore Lore ",
+      "adultsPrice": 30,
+      "childrenPrice": 15,
+      "id": 7
+    },
+    {
+      "title": "Zwiedzanie Brisbane",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quod ipsa distinctio quo ullam",
+      "adultsPrice": 70,
+      "childrenPrice": 30,
+      "id": 8
+    },
+    {
+      "title": "Zwiedzanie Sydney",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quod ipsa distinctio quo ullam\n\n",
+      "adultsPrice": 99,
+      "childrenPrice": 49,
+      "id": 9
+    }
+  ],
+  "orders": []
 }
