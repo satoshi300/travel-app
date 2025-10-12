@@ -47,3 +47,7 @@ ul {
 .excursions__item--prototype {
     display: none;
 }
+
+.summary__item--prototype {
+    display: none;
+}

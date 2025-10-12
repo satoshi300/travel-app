@@ -84,20 +84,11 @@ class ExcursionsAPI {
                 childrenLabel.firstChild.textContent = `Dziecko: ${item.childrenPrice} PLN x`;
                 protoClone.querySelector('[name="childrenPrice"]')
 
-                // dodac reszte pol do odczytania z API
-
-                // protoClone.querySelector('[name="adultsPrice"]').innerText = item.adultsPrice;
-                // protoClone.querySelector('.children').innerText = item.childrenPrice;
-
                 this.ulEl.appendChild(protoClone)
                 protoClone.classList.remove('excursions__item--prototype');
-
-                //                 console.log(protoClone)
             })
         }
     };
-
-
 
 }
 
