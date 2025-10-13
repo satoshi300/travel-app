@@ -64,7 +64,7 @@ class ExcursionsAPI {
 
     insertExcursionsClient(data) {
         const protoEl = document.querySelector('.excursions__item--prototype')
-        console.log(protoEl)
+        // console.log(protoEl)
         if (protoEl) {
             this.ulEl.innerHTML = '';
             this.ulEl.appendChild(protoEl);
@@ -72,7 +72,7 @@ class ExcursionsAPI {
             data.forEach(item => {
                 const protoClone = protoEl.cloneNode(true);
                 protoClone.dataset.id = item.id;
-                console.log(protoEl)
+                // console.log(protoEl)
                 protoClone.querySelector('.excursions__title').innerText = item.title;
                 protoClone.querySelector('.excursions__description').innerText = item.description;
 
