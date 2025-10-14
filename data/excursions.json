@@ -36,5 +36,52 @@
       "id": 9
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "clientName": "Michal Wasiak",
+      "email": "michal.wasiak@hotmail.com",
+      "excursions": [
+        {
+          "name": "Zwiedzanie Krakowa",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "michal.wasiak@hotmail.com",
+      "excursions": [
+        {
+          "name": "Zwiedzanie Krakowa",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        },
+        {
+          "name": "Zwiedzanie Warszawy",
+          "totalPrice": "100 PLN",
+          "details": "Dorośli: 5 x 20PLN dzieci: 0 x 30PLN"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "michal.wasiak@hotmail.com",
+      "excursions": [
+        {
+          "name": "Zwiedzanie Krakowa",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        },
+        {
+          "name": "Zwiedzanie Sydney",
+          "totalPrice": "396 PLN",
+          "details": "Dorośli: 4 x 99PLN dzieci: 0 x 49PLN"
+        }
+      ],
+      "id": 4
+    }
+  ]
 }

@@ -5,7 +5,7 @@ import './../css/client.css';
 import ExcursionsAPI from './ExcursionsAPI';
 const excursions = new ExcursionsAPI();
 
-const apiExcUrl = 'http://localhost:3000/excursions';
+const apiOrdersUrl = 'http://localhost:3000/orders';
 
 
 document.addEventListener('DOMContentLoaded', init);
@@ -22,10 +22,43 @@ orderTotalPriceEl.textContent = '';
 const formValidate = document.querySelector('.order');
 formValidate.addEventListener('submit', validateForm);
 
+const sendDataToAPIEl = document.querySelector('.panel__form')
+sendDataToAPIEl.addEventListener('submit', sendDataToAPI);
+
 function init() {
     console.log('DOM');
     excursions.loadDataClient();
+    // excursions.sendDataToAPI();
 
+}
+
+function sendDataToAPI(e) {
+    e.preventDefault();
+    const { name, email } = e.target.elements;
+
+    const summaryItems = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
+    const excursions = Array.from(summaryItems).map(item => ({
+        name: item.querySelector('.summary__name').innerText,
+        totalPrice: item.querySelector('.summary__total-price').innerText,
+        details: item.querySelector('.summary__prices').innerText
+    }));
+
+    const data = {
+        clientName: name.value,
+        email: email.value,
+        excursions
+    };
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+    }
+
+    fetch(apiOrdersUrl, options)
+        .then(data => console.log(data))
+        .catch(err => console.error(err))
+    console.log(data);
 }
 
 function validateForm(e) {
@@ -69,13 +102,13 @@ function validateForm(e) {
         sectionPanel.appendChild(newDiv);
         newDiv.appendChild(newUl);
         newUl.prepend(newH1);
-
-
     } else {
         alert('Dziękujemy za złożenie zamówienia o wartości ' + totalPrice + ' . Szczegóły zamówienia zostały wysłane na adres e-mail: ' + email);
         location.reload();
     }
 }
+
+
 
 function totalPriceExcursions(e) {
     const prices = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
@@ -96,6 +129,7 @@ function totalPriceExcursions(e) {
 function addExcursionsToOrder(e) {
     e.preventDefault();
     const parentEl = e.target.parentElement;
+    console.log(parentEl)
     const titleEl = parentEl.querySelector('.excursions__title').textContent.trim();
     const adultsNumber = Number(e.target.elements.adultsPrice.value.trim());
     const childrenNumber = Number(e.target.elements.childrenPrice.value.trim());
