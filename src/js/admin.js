@@ -1,15 +1,7 @@
-// Panel zarządzania wycieczkami zapisanymi w bazie danych. Jego funkcjonalności to:
-
-// dodawanie wycieczek
-// usuwanie wycieczek
-// modyfikowanie wycieczek.
-// Pliki powiązane:
-
-// ./src/admin.html
-// ./src/js/admin.js
-// ./src/css/admin.css
-
 import './../css/admin.css';
+
+import Render from './Render';
+const render = new Render();
 
 import ExcursionsAPI from './ExcursionsAPI';
 const excursions = new ExcursionsAPI();
@@ -23,33 +15,19 @@ console.log('admin');
 
 
 const form = document.querySelector('.form');
-form.addEventListener('submit', addExcursion)
+form.addEventListener('submit', (e) => {
+    excursions.addExcursion(e)
+})
 
 function init() {
     console.log('DOM');
-    excursions.loadDataAdmin();
+    // excursions.loadDataAdmin();
+    excursions.loadData()
+        .then(data => {
+            // console.log(data, 'odbieramy dane')
+            render.insertExcursionsAdmin(data);
+        })
     removeExcursions();
-    // excursions.insertExcursions();
-}
-
-function addExcursion(e) {
-    e.preventDefault();
-    const { title, description, adultsPrice, childrenPrice } = e.target.elements;
-
-    const data = {
-        title: title.value, description: description.value, adultsPrice: Number(adultsPrice.value), childrenPrice: Number(childrenPrice.value)
-    };
-    console.log(data)
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-    };
-    fetch(apiExcUrl, options)
-        .then(resp => console.log(resp))
-        .catch(err => console.error(err))
-        .finally(() => excursions.loadData());
 }
 
 function removeExcursions() {

@@ -2,11 +2,16 @@
 
 import './../css/client.css';
 
+import Validator from './Validator.js';
+const validator = new Validator();
+
+import Render from './Render';
+const render = new Render();
+
 import ExcursionsAPI from './ExcursionsAPI';
-const excursions = new ExcursionsAPI();
+const excursions = new ExcursionsAPI(); //zmienic excursion na API
 
 const apiOrdersUrl = 'http://localhost:3000/orders';
-
 
 document.addEventListener('DOMContentLoaded', init);
 
@@ -19,63 +24,18 @@ const orderTotalPriceEl = document.querySelector('.order__total-price-value');
 orderTotalPriceEl.textContent = '';
 
 // walidacja formularza
+// e.taget.elements to wszystkie pola formularza jakie zawiera
 const formValidate = document.querySelector('.order');
-formValidate.addEventListener('submit', validateForm);
-
-const sendDataToAPIEl = document.querySelector('.panel__form')
-sendDataToAPIEl.addEventListener('submit', sendDataToAPI);
-
-function init() {
-    console.log('DOM');
-    excursions.loadDataClient();
-    // excursions.sendDataToAPI();
-
-}
-
-function sendDataToAPI(e) {
-    e.preventDefault();
-    const { name, email } = e.target.elements;
-
-    const summaryItems = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
-    const excursions = Array.from(summaryItems).map(item => ({
-        name: item.querySelector('.summary__name').innerText,
-        totalPrice: item.querySelector('.summary__total-price').innerText,
-        details: item.querySelector('.summary__prices').innerText
-    }));
-
-    const data = {
-        clientName: name.value,
-        email: email.value,
-        excursions
-    };
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-    }
-
-    fetch(apiOrdersUrl, options)
-        .then(data => console.log(data))
-        .catch(err => console.error(err))
-    console.log(data);
-}
-
-function validateForm(e) {
+formValidate.addEventListener('submit', (e) => {
     e.preventDefault();
     const totalPrice = document.querySelector('.order__total-price-value').textContent;
     const name = e.target.elements.name.value.trim();
     const email = e.target.elements.email.value.trim();
     const summaryEl = document.querySelector('.summary__item--new');
-    const errors = [];
-    const labelsList = [];
-    if (name.length === 0) {
-        labelsList.push(e.target.elements.name.value);
-        errors.push('Dane w polu Imię i Nazwisko są niepoprawne!');
-    } if (!email.includes('@')) {
-        labelsList.push(e.target.elements.email.value);
-        errors.push('Dane w polu Email są niepoprawne!');
-    }
+    const errors = validator.run({
+        name: name,
+        email: email
+    });
     if (!summaryEl) {
         alert('Dodaj wycieczkę do koszyka');
     } if (errors.length > 0) {
@@ -103,14 +63,48 @@ function validateForm(e) {
         newDiv.appendChild(newUl);
         newUl.prepend(newH1);
     } else {
-        alert('Dziękujemy za złożenie zamówienia o wartości ' + totalPrice + ' . Szczegóły zamówienia zostały wysłane na adres e-mail: ' + email);
-        location.reload();
+        const { name, email } = e.target.elements;
+
+        const summaryItems = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
+        const excursionsData = Array.from(summaryItems).map(item => ({
+            name: item.querySelector('.summary__name').innerText,
+            totalPrice: item.querySelector('.summary__total-price').innerText,
+            details: item.querySelector('.summary__prices').innerText
+
+        }));
+        const data = {
+            clientName: name.value,
+            email: email.value,
+            excursionsData
+        };
+        excursions.sendOrder(data)
+            .then(() => {
+                alert('Dziękujemy za złożenie zamówienia o wartości ' + totalPrice + ' . Szczegóły zamówienia zostały wysłane na adres e-mail: ' + email);
+                location.reload();
+            })
+
     }
+})
+
+// wyslanie zamowienia do API
+const sendOrderToAPIEl = document.querySelector('.panel__form');
+sendOrderToAPIEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+});
+
+
+function init() {
+    console.log('DOM');
+    // excursions.loadDataClient();
+    excursions.loadData()
+        .then(data => {
+            render.insertExcursionsClient(data)
+        })
+    // excursions.sendDataToAPI();
 }
 
-
-
 function totalPriceExcursions(e) {
+    console.trace('test')
     const prices = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
     let sum = 0;
     prices.forEach(function (item) {
@@ -122,9 +116,6 @@ function totalPriceExcursions(e) {
         priceTotal.style.fontWeight = 'bold';
     })
 }
-
-
-
 
 function addExcursionsToOrder(e) {
     e.preventDefault();
@@ -139,7 +130,6 @@ function addExcursionsToOrder(e) {
     const childrenPrice = parentEl.querySelector('.children').textContent;
     const childrenPriceNumber = childrenPrice.match(/\d+(\.\d+)?/g)
     const totalPrice = adultsNumber * adultsPriceNumber + childrenNumber * childrenPriceNumber;    // pobrac cene i pomnozyc razy adultsNumber i children number i przekazac do   <strong class="summary__total-price">199PLN</strong>
-
 
     if (adultsNumber || childrenNumber > 0) {
         const protoEl = document.querySelector('.summary__item--prototype');
