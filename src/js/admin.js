@@ -1,3 +1,4 @@
+import './../css/global.css'
 import './../css/admin.css';
 
 import Render from './Render';
@@ -21,10 +22,8 @@ form.addEventListener('submit', (e) => {
 
 function init() {
     console.log('DOM');
-    // excursions.loadDataAdmin();
     excursions.loadData()
         .then(data => {
-            // console.log(data, 'odbieramy dane')
             render.insertExcursionsAdmin(data);
         })
     removeExcursions();

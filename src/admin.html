@@ -11,16 +11,20 @@
         http-equiv="X-UA-Compatible"
         content="ie=edge"
     >
+    <script
+        src="https://kit.fontawesome.com/98e4a0361f.js"
+        crossorigin="anonymous"
+    ></script>
     <title>JavaScript: API oraz FETCH - admin, devmentor.pl</title>
 </head>
 
 <body>
     <h1>Panel administratora</h1>
-    <section class="panel">
-        <ul class="panel__excursions excursions">
+    <section class="panel container">
+        <ul class="panel__excursions excursions row">
             <li
                 data-id="1"
-                class="excursions__item excursions__item--prototype"
+                class="excursions__item excursions__item--prototype cell"
             >
                 <header class="excursions__header">
                     <h2 class="excursions__title">Ogrodzieniec</h2>
@@ -59,9 +63,9 @@
                 </form>
             </li>
         </ul>
-        <section>
+        <section class="row">
             <form
-                class="form"
+                class="form cell"
                 novalidate
             >
                 <div class="form__row">

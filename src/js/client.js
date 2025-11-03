@@ -1,6 +1,5 @@
-// - wysłaniem zamówienia do bazy danych (u nas to będzie API uruchomione dzięki JSON Server)
-
-import './../css/client.css';
+import './../css/reset.css'
+import './../css/client.css'
 
 import Validator from './Validator.js';
 const validator = new Validator();
@@ -9,9 +8,19 @@ import Render from './Render';
 const render = new Render();
 
 import ExcursionsAPI from './ExcursionsAPI';
-const excursions = new ExcursionsAPI(); //zmienic excursion na API
+const excursions = new ExcursionsAPI();
 
 const apiOrdersUrl = 'http://localhost:3000/orders';
+
+function init() {
+    console.log('DOM');
+    // excursions.loadDataClient();
+    excursions.loadData()
+        .then(data => {
+            render.insertExcursionsClient(data)
+        })
+    // excursions.sendDataToAPI();
+}
 
 document.addEventListener('DOMContentLoaded', init);
 
@@ -49,11 +58,14 @@ formValidate.addEventListener('submit', (e) => {
 
         errors.forEach(function (err) {
             newH1.innerText = 'Popraw błędy w formularzu';
+            newH1.style.fontSize = '32px';
             newH1.style.color = 'red';
+
             if (newUl) {
 
                 const newLi = document.createElement('li');
                 newLi.style.marginTop = '2px';
+                newLi.style.fontSize = '18px'
 
                 newLi.innerText = err;
                 newUl.appendChild(newLi);
@@ -93,18 +105,7 @@ sendOrderToAPIEl.addEventListener('submit', (e) => {
 });
 
 
-function init() {
-    console.log('DOM');
-    // excursions.loadDataClient();
-    excursions.loadData()
-        .then(data => {
-            render.insertExcursionsClient(data)
-        })
-    // excursions.sendDataToAPI();
-}
-
 function totalPriceExcursions(e) {
-    console.trace('test')
     const prices = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
     let sum = 0;
     prices.forEach(function (item) {
@@ -129,7 +130,7 @@ function addExcursionsToOrder(e) {
     const adultsPriceNumber = adultsPrice.match(/\d+(\.\d+)?/g)
     const childrenPrice = parentEl.querySelector('.children').textContent;
     const childrenPriceNumber = childrenPrice.match(/\d+(\.\d+)?/g)
-    const totalPrice = adultsNumber * adultsPriceNumber + childrenNumber * childrenPriceNumber;    // pobrac cene i pomnozyc razy adultsNumber i children number i przekazac do   <strong class="summary__total-price">199PLN</strong>
+    const totalPrice = adultsNumber * adultsPriceNumber + childrenNumber * childrenPriceNumber;
 
     if (adultsNumber || childrenNumber > 0) {
         const protoEl = document.querySelector('.summary__item--prototype');
@@ -141,6 +142,7 @@ function addExcursionsToOrder(e) {
         protoClone.querySelector('.summary__total-price').innerText = totalPrice + ' PLN';
         protoClone.querySelector('.summary__prices').innerText = 'Dorośli: ' + adultsNumber + ' x ' + adultsPriceNumber + 'PLN' + ' dzieci: ' + childrenNumber + ' x ' + childrenPriceNumber + 'PLN';
         orderTotalPriceEl.textContent = totalPrice + ' PLN';
+        // protoClone.style.fontSize = '18px'
 
         const removeExcursion = protoClone.querySelector('.summary__btn-remove');
         removeExcursion.addEventListener('click', deleteExcursion);

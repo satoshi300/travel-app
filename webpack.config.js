@@ -16,6 +16,7 @@ module.exports = {
         // definiuję nazwę pliku wyjściowego
     },
     devtool: 'inline-source-map',
+    target: 'web', // <--- to jest najważniejszy element
     module: {
         rules: [
             {

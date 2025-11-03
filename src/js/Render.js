@@ -12,7 +12,6 @@ class Render {
             excursionsList.forEach(excursion => {
                 const protoClone = protoEl.cloneNode(true);
                 protoClone.dataset.id = excursion.id;
-
                 protoClone.querySelector('.excursions__title').innerText = excursion.title;
                 protoClone.querySelector('.excursions__description').innerText = excursion.description;
 
@@ -29,7 +28,6 @@ class Render {
 
     insertExcursionsClient(data) {
         const protoEl = document.querySelector('.excursions__item--prototype')
-        // console.log(protoEl)
         if (protoEl) {
             this.ulEl.innerHTML = '';
             this.ulEl.appendChild(protoEl);
@@ -37,7 +35,14 @@ class Render {
             data.forEach(item => {
                 const protoClone = protoEl.cloneNode(true);
                 protoClone.dataset.id = item.id;
-                // console.log(protoEl)
+                const figureEl = protoClone.querySelector('figure');
+                if (figureEl) {
+                    const img = document.createElement('img');
+                    img.src = item.image_url;
+                    figureEl.appendChild(img);
+
+                }
+                
                 protoClone.querySelector('.excursions__title').innerText = item.title;
                 protoClone.querySelector('.excursions__description').innerText = item.description;
 
@@ -46,7 +51,7 @@ class Render {
                 protoClone.querySelector('[name="adultsPrice"]').dataset.price = item.adultsPrice;
 
                 const childrenLabel = protoClone.querySelector('.children');
-                childrenLabel.firstChild.textContent = `Dziecko: ${item.childrenPrice} PLN x`;
+                childrenLabel.firstChild.textContent = `Dziecko: ${item.childrenPrice} PLN x `;
                 protoClone.querySelector('[name="childrenPrice"]')
 
                 this.ulEl.appendChild(protoClone)
