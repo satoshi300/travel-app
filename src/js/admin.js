@@ -20,6 +20,7 @@ form.addEventListener('submit', (e) => {
     excursions.addExcursion(e)
 })
 
+
 function init() {
     console.log('DOM');
     excursions.loadData()
@@ -74,7 +75,7 @@ function removeExcursions() {
                     .then(resp => console.log(resp))
                     .catch(err => console.log(err))
                     .finally(() => {
-                        e.target.innerText = 'edytuj';
+                        e.target.value = 'edytuj';
                         editableEls.forEach(el => el.contentEditable = false);
                     });
             } else {

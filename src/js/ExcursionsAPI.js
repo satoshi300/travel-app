@@ -13,10 +13,10 @@ class ExcursionsAPI {
     }
 
     addExcursion(e) {
-        const { title, description, adultsPrice, childrenPrice } = e.target.elements;
+        const { title, description, adultsPrice, childrenPrice, imgUrl } = e.target.elements;
 
         const data = {
-            title: title.value, description: description.value, adultsPrice: Number(adultsPrice.value), childrenPrice: Number(childrenPrice.value)
+            title: title.value, description: description.value, adultsPrice: Number(adultsPrice.value), childrenPrice: Number(childrenPrice.value), imgUrl: imgUrl.value
         };
         console.log(data)
 
@@ -39,8 +39,8 @@ class ExcursionsAPI {
         }
 
         return fetch(this.ordersUrl, options)
-      
+
     }
-  }
+}
 
 export default ExcursionsAPI;

@@ -3,9 +3,8 @@
     {
       "title": "Zwiedzanie Krakowa",
       "description": "Odkryj magiczny Kraków — dawne serce Polski. Spacer po Starym Mieście, Wawel, Sukiennice i urokliwe uliczki Kazimierza pozwolą Ci poczuć niepowtarzalny klimat tego miasta pełnego historii i kultury. ",
-      "adultsPrice": 50,
+      "adultsPrice": 100,
       "childrenPrice": 25,
-      "image_url": "./../src/img/krakow.jpg",
       "id": 4
     },
     {
@@ -39,6 +38,14 @@
       "childrenPrice": 30,
       "image_url": "./../src/img/sunshine coast.jpg",
       "id": 9
+    },
+    {
+      "title": "Zwiedzanie Brisbane",
+      "description": "Poznaj uroki Brisbane – nowoczesnej metropolii otoczonej tropikalną przyrodą. Spacer po South Bank z widokiem na rzekę, ogród botaniczny i kultowy most Story Bridge pozwolą Ci poczuć wyjątkowy klimat miasta.",
+      "adultsPrice": 99,
+      "childrenPrice": 49,
+      "imgUrl": "https://pixabay.com/get/g9cfdd175b2fa8455fb36df92fbc576b4d2d7c3242bda7da2e0638cf3ab4b45dde22d8da1bdb744807b42d32077d4833b780f8bab6656a2b56a6498e027d3f05ff6cb0a6658f9ffd3349fef221c6bc784_640.jpg",
+      "id": 10
     }
   ],
   "orders": [
@@ -53,6 +60,76 @@
         }
       ],
       "id": 1
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "akm@design.com.au",
+      "excursionsData": [],
+      "id": 2
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "michal.wasiak@hotmail.com",
+      "excursionsData": [
+        {
+          "name": "Zwiedzanie Sydney",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        },
+        {
+          "name": "Zwiedzanie Brisbane",
+          "totalPrice": "495 PLN",
+          "details": "Dorośli: 5 x 99PLN dzieci: 0 x 49PLN"
+        },
+        {
+          "name": "Zwiedzanie Sunshine Coast",
+          "totalPrice": "120 PLN",
+          "details": "Dorośli: 0 x 75PLN dzieci: 4 x 30PLN"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "admin@akmdesign.com.au",
+      "excursionsData": [],
+      "id": 4
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "akm@design.com.au",
+      "excursionsData": [
+        {
+          "name": "Zwiedzanie Sydney",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "clientName": "Michal",
+      "email": "akm@design.com.au",
+      "excursionsData": [
+        {
+          "name": "Zwiedzanie Sydney",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "clientName": "Michal",
+      "email": "michal.wasiak@hotmail.com",
+      "excursionsData": [
+        {
+          "name": "Zwiedzanie Sydney",
+          "totalPrice": "250 PLN",
+          "details": "Dorośli: 5 x 50PLN dzieci: 0 x 25PLN"
+        }
+      ],
+      "id": 7
     }
   ]
 }

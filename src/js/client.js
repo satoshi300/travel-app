@@ -47,7 +47,7 @@ formValidate.addEventListener('submit', (e) => {
     });
     if (!summaryEl) {
         alert('Dodaj wycieczkę do koszyka');
-    } if (errors.length > 0) {
+    } else if (errors.length > 0) {
         const sectionPanel = document.querySelector('.panel__form');
         e.preventDefault();
 
@@ -64,6 +64,7 @@ formValidate.addEventListener('submit', (e) => {
             if (newUl) {
 
                 const newLi = document.createElement('li');
+                // dodac i zdefiniowac w css
                 newLi.style.marginTop = '2px';
                 newLi.style.fontSize = '18px'
 
@@ -91,18 +92,18 @@ formValidate.addEventListener('submit', (e) => {
         };
         excursions.sendOrder(data)
             .then(() => {
-                alert('Dziękujemy za złożenie zamówienia o wartości ' + totalPrice + ' . Szczegóły zamówienia zostały wysłane na adres e-mail: ' + email);
+                alert('Dziękujemy za złożenie zamówienia o wartości ' + totalPrice + ' . Szczegóły zamówienia zostały wysłane na adres e-mail: ' + email.value);
                 location.reload();
             })
 
     }
 })
 
-// wyslanie zamowienia do API
-const sendOrderToAPIEl = document.querySelector('.panel__form');
-sendOrderToAPIEl.addEventListener('submit', (e) => {
-    e.preventDefault();
-});
+// // wyslanie zamowienia do API
+// const sendOrderToAPIEl = document.querySelector('.panel__form');
+// sendOrderToAPIEl.addEventListener('submit', (e) => {
+//     e.preventDefault();
+// });
 
 
 function totalPriceExcursions(e) {
@@ -142,7 +143,7 @@ function addExcursionsToOrder(e) {
         protoClone.querySelector('.summary__total-price').innerText = totalPrice + ' PLN';
         protoClone.querySelector('.summary__prices').innerText = 'Dorośli: ' + adultsNumber + ' x ' + adultsPriceNumber + 'PLN' + ' dzieci: ' + childrenNumber + ' x ' + childrenPriceNumber + 'PLN';
         orderTotalPriceEl.textContent = totalPrice + ' PLN';
-        // protoClone.style.fontSize = '18px'
+        protoClone.style.fontSize = '18px'
 
         const removeExcursion = protoClone.querySelector('.summary__btn-remove');
         removeExcursion.addEventListener('click', deleteExcursion);
