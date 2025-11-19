@@ -17,7 +17,8 @@ function init() {
     // excursions.loadDataClient();
     excursions.loadData()
         .then(data => {
-            render.insertExcursionsClient(data)
+            render.insertExcursionsClient(data);
+            updateCartIcon();
         })
     // excursions.sendDataToAPI();
 }
@@ -31,6 +32,17 @@ excursionsEl.addEventListener('submit', totalPriceExcursions);
 // usuniecie danych z "panel__order" "order__total-price" przy wczytaniu strony
 const orderTotalPriceEl = document.querySelector('.order__total-price-value');
 orderTotalPriceEl.textContent = '';
+
+// aktualizacja koszyka
+function updateCartIcon() {
+    // wszystkie pozycje w podsumowaniu, poza prototypem
+    const items = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
+    const countEl = document.querySelector('.cart-count');
+
+    if (!countEl) return;
+
+    countEl.textContent = items.length; // ile pozycji w "koszyku"
+}
 
 // walidacja formularza
 const formValidate = document.querySelector('.order');
@@ -127,7 +139,7 @@ function addExcursionsToOrder(e) {
     const childrenPriceNumber = childrenPrice.match(/\d+(\.\d+)?/g)
     const totalPrice = adultsNumber * adultsPriceNumber + childrenNumber * childrenPriceNumber;
 
-    if (adultsNumber || childrenNumber > 0) {
+    if (adultsNumber > 0 || childrenNumber > 0) {
         const protoEl = document.querySelector('.summary__item--prototype');
         const ulEl = document.querySelector('.summary')
         const protoClone = protoEl.cloneNode(true);
@@ -147,10 +159,14 @@ function addExcursionsToOrder(e) {
             protoClone.remove();
             orderTotalPriceEl.textContent = '';
             totalPriceExcursions();
+            updateCartIcon();
 
         }
         ulEl.appendChild(protoClone)
         protoClone.classList.remove('summary__item--prototype');
+
+        updateCartIcon();
+
     } else {
         alert('Podaj liczbe uczestników')
     }
