@@ -5,6 +5,7 @@
       "description": "Odkryj magiczny Kraków — dawne serce Polski. Spacer po Starym Mieście, Wawel, Sukiennice i urokliwe uliczki Kazimierza pozwolą Ci poczuć niepowtarzalny klimat tego miasta pełnego historii i kultury. ",
       "adultsPrice": 100,
       "childrenPrice": 25,
+      "imageUrl": "https://github.com/satoshi300/travel-app/blob/main/src/img/krakow.jpg?raw=true",
       "id": 4
     },
     {
@@ -12,7 +13,7 @@
       "description": "Poznaj tętniącą życiem stolicę Polski! Zobacz Stare Miasto, Pałac Kultury i Nauki, nowoczesne bulwary nad Wisłą oraz Muzeum Powstania Warszawskiego — połączenie historii i współczesności w jednym miejscu.",
       "adultsPrice": 20,
       "childrenPrice": 30,
-      "image_url": "./../src/img/warszawa.jpg",
+      "imageUrl": "https://github.com/satoshi300/travel-app/blob/main/src/img/warszawa.jpg?raw=true",
       "id": 6
     },
     {
@@ -20,7 +21,7 @@
       "description": "Gdynia to nowoczesne miasto nad Bałtykiem. Spaceruj po słynnym Skwerze Kościuszki, zobacz ORP Błyskawica i Dar Pomorza, a na koniec zrelaksuj się na plaży z widokiem na port i morze.",
       "adultsPrice": 30,
       "childrenPrice": 15,
-      "image_url": "./../src/img/gdynia.jpg",
+      "imageUrl": "https://github.com/satoshi300/travel-app/blob/main/src/img/gdynia.jpg?raw=true",
       "id": 7
     },
     {
@@ -28,7 +29,7 @@
       "description": "Poznaj jedno z najpiękniejszych miast świata! Opera House, Harbour Bridge, Bondi Beach i zapierające dech w piersiach widoki na zatokę sprawią, że pokochasz Sydney od pierwszego wejrzenia.",
       "adultsPrice": 50,
       "childrenPrice": 25,
-      "image_url": "./../src/img/sydney.jpg",
+      "imageUrl": "https://github.com/satoshi300/travel-app/blob/main/src/img/sydney.jpg?raw=true",
       "id": 8
     },
     {
@@ -36,7 +37,7 @@
       "description": "Idealne miejsce dla miłośników natury i słońca! Sunshine Coast zachwyca złotymi plażami, parkami narodowymi i spokojną atmosferą. Doskonałe miejsce na relaks, surfowanie i kontakt z australijską przyrodą.",
       "adultsPrice": 75,
       "childrenPrice": 30,
-      "image_url": "./../src/img/sunshine coast.jpg",
+      "imageUrl": "https://github.com/satoshi300/travel-app/blob/main/src/img/sunshine%20coast.jpg?raw=true",
       "id": 9
     },
     {
@@ -44,7 +45,7 @@
       "description": "Poznaj uroki Brisbane – nowoczesnej metropolii otoczonej tropikalną przyrodą. Spacer po South Bank z widokiem na rzekę, ogród botaniczny i kultowy most Story Bridge pozwolą Ci poczuć wyjątkowy klimat miasta.",
       "adultsPrice": 99,
       "childrenPrice": 49,
-      "imgUrl": "https://pixabay.com/get/g9cfdd175b2fa8455fb36df92fbc576b4d2d7c3242bda7da2e0638cf3ab4b45dde22d8da1bdb744807b42d32077d4833b780f8bab6656a2b56a6498e027d3f05ff6cb0a6658f9ffd3349fef221c6bc784_640.jpg",
+      "imageUrl": "https://github.com/satoshi300/travel-app/blob/main/src/img/sunshine%20coast.jpg?raw=true",
       "id": 10
     }
   ],

@@ -33,7 +33,6 @@ const orderTotalPriceEl = document.querySelector('.order__total-price-value');
 orderTotalPriceEl.textContent = '';
 
 // walidacja formularza
-// e.taget.elements to wszystkie pola formularza jakie zawiera
 const formValidate = document.querySelector('.order');
 formValidate.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -49,9 +48,14 @@ formValidate.addEventListener('submit', (e) => {
         alert('Dodaj wycieczkę do koszyka');
     } else if (errors.length > 0) {
         const sectionPanel = document.querySelector('.panel__form');
+        const panelOrderEl = sectionPanel.querySelector('form:first-child')
+        console.log(panelOrderEl)
+
         e.preventDefault();
 
         const newDiv = document.querySelector('.errors');
+        newDiv.classList.add('mobile', 'desktop')
+
         newDiv.innerHTML = '';
         const newUl = document.createElement('ul');
         const newH1 = document.createElement('h1');
@@ -64,15 +68,13 @@ formValidate.addEventListener('submit', (e) => {
             if (newUl) {
 
                 const newLi = document.createElement('li');
-                // dodac i zdefiniowac w css
                 newLi.style.marginTop = '2px';
-                newLi.style.fontSize = '18px'
 
                 newLi.innerText = err;
                 newUl.appendChild(newLi);
             }
         });
-        sectionPanel.appendChild(newDiv);
+        sectionPanel.insertBefore(newDiv, panelOrderEl);
         newDiv.appendChild(newUl);
         newUl.prepend(newH1);
     } else {
@@ -99,13 +101,6 @@ formValidate.addEventListener('submit', (e) => {
     }
 })
 
-// // wyslanie zamowienia do API
-// const sendOrderToAPIEl = document.querySelector('.panel__form');
-// sendOrderToAPIEl.addEventListener('submit', (e) => {
-//     e.preventDefault();
-// });
-
-
 function totalPriceExcursions(e) {
     const prices = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
     let sum = 0;
@@ -122,7 +117,6 @@ function totalPriceExcursions(e) {
 function addExcursionsToOrder(e) {
     e.preventDefault();
     const parentEl = e.target.parentElement;
-    console.log(parentEl)
     const titleEl = parentEl.querySelector('.excursions__title').textContent.trim();
     const adultsNumber = Number(e.target.elements.adultsPrice.value.trim());
     const childrenNumber = Number(e.target.elements.childrenPrice.value.trim());
@@ -143,7 +137,8 @@ function addExcursionsToOrder(e) {
         protoClone.querySelector('.summary__total-price').innerText = totalPrice + ' PLN';
         protoClone.querySelector('.summary__prices').innerText = 'Dorośli: ' + adultsNumber + ' x ' + adultsPriceNumber + 'PLN' + ' dzieci: ' + childrenNumber + ' x ' + childrenPriceNumber + 'PLN';
         orderTotalPriceEl.textContent = totalPrice + ' PLN';
-        protoClone.style.fontSize = '18px'
+        protoClone.classList.add('mobile', 'desktop')
+
 
         const removeExcursion = protoClone.querySelector('.summary__btn-remove');
         removeExcursion.addEventListener('click', deleteExcursion);

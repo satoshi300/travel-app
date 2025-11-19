@@ -17,6 +17,7 @@ class Render {
 
                 protoClone.querySelector('[name="adultsPrice"] strong').innerText = excursion.adultsPrice;
                 protoClone.querySelector('[name="childrenPrice"] strong').innerText = excursion.childrenPrice;
+                protoClone.querySelector('[name="imageUrl"]').innerText = excursion.imageUrl;
 
                 this.ulEl.appendChild(protoClone)
                 protoClone.classList.remove('excursions__item--prototype');
@@ -38,11 +39,11 @@ class Render {
                 const figureEl = protoClone.querySelector('figure');
                 if (figureEl) {
                     const img = document.createElement('img');
-                    img.src = item.image_url;
+                    img.src = item.imageUrl;
+                    console.log(img)
                     figureEl.appendChild(img);
-
                 }
-                
+
                 protoClone.querySelector('.excursions__title').innerText = item.title;
                 protoClone.querySelector('.excursions__description').innerText = item.description;
 

@@ -56,14 +56,20 @@ function removeExcursions() {
             const description = parentLiEl.querySelector('p');
             const adultsPrice = parentLiEl.querySelector('[name="adultsPrice"] strong');
             const childrenPrice = parentLiEl.querySelector('[name="childrenPrice"] strong');
+            const imageUrl = parentLiEl.querySelector('[name="imageUrl"]')
+            console.log(imageUrl)
 
-            const editableEls = [title, description, adultsPrice, childrenPrice]
+            const editableEls = [title, description, adultsPrice, childrenPrice, imageUrl]
             const allEditable = editableEls.every(el => el.isContentEditable);
 
             if (allEditable) {
 
                 const data = {
-                    title: title.textContent, description: description.textContent, adultsPrice: Number(adultsPrice.textContent), childrenPrice: Number(childrenPrice.textContent)
+                    title: title.textContent,
+                    description: description.textContent,
+                    adultsPrice: Number(adultsPrice.textContent),
+                    childrenPrice: Number(childrenPrice.textContent),
+                    imageUrl: imageUrl.textContent
                 };
                 const options = {
                     method: 'PUT',

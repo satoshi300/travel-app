@@ -13,10 +13,10 @@ class ExcursionsAPI {
     }
 
     addExcursion(e) {
-        const { title, description, adultsPrice, childrenPrice, imgUrl } = e.target.elements;
+        const { title, description, adultsPrice, childrenPrice, imageUrl } = e.target.elements;
 
         const data = {
-            title: title.value, description: description.value, adultsPrice: Number(adultsPrice.value), childrenPrice: Number(childrenPrice.value), imgUrl: imgUrl.value
+            title: title.value, description: description.value, adultsPrice: Number(adultsPrice.value), childrenPrice: Number(childrenPrice.value), imageUrl: imageUrl.value
         };
         console.log(data)
 
