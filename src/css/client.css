@@ -196,7 +196,6 @@ input[type="submit"] {
 
         width: auto;
         font-size: 1.6rem;
-
     }
 
     .fa-cart-shopping {
@@ -209,13 +208,11 @@ input[type="submit"] {
     .excursions {
         display: flex;
         flex-wrap: wrap;
-        /* gap: 20px; */
         align-items: flex-start;
     }
 
     .excursions__item img {
         height: 280px;
-        /* width: 100%; */
     }
 
     .excursions__item {
@@ -227,7 +224,6 @@ input[type="submit"] {
     input[type="submit"] {
         width: auto;
         font-size: 1.8rem;
-
     }
 
     .excursions__header h2 {
