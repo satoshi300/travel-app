@@ -39,7 +39,6 @@ class ExcursionsAPI {
         }
 
         return fetch(this.ordersUrl, options)
-
     }
 }
 

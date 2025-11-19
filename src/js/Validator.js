@@ -1,6 +1,4 @@
 class Validator {
-
-
     run(data) {
         const errors = [];
         if (data.name.length === 0) {

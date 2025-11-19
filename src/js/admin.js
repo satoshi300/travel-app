@@ -92,14 +92,6 @@ function removeExcursions() {
                     el => el.contentEditable = true
                 );
             }
-            console.log(title);
-            console.log(description);
-            console.log(adultsPrice);
-            console.log(childrenPrice);
-            console.log(id)
-            console.log('click update')
-            // console.log('click', e.target)
-
         }
     })
 }

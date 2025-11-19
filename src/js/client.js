@@ -14,13 +14,11 @@ const apiOrdersUrl = 'http://localhost:3000/orders';
 
 function init() {
     console.log('DOM');
-    // excursions.loadDataClient();
     excursions.loadData()
         .then(data => {
             render.insertExcursionsClient(data);
             updateCartIcon();
         })
-    // excursions.sendDataToAPI();
 }
 
 document.addEventListener('DOMContentLoaded', init);
@@ -35,13 +33,10 @@ orderTotalPriceEl.textContent = '';
 
 // aktualizacja koszyka
 function updateCartIcon() {
-    // wszystkie pozycje w podsumowaniu, poza prototypem
     const items = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
     const countEl = document.querySelector('.cart-count');
-
     if (!countEl) return;
-
-    countEl.textContent = items.length; // ile pozycji w "koszyku"
+    countEl.textContent = items.length;
 }
 
 // walidacja formularza
