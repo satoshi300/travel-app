@@ -1,121 +1,183 @@
+![Travel App](./src/img/app.gif) 
 
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+# Travel App
 
-&nbsp;
+Travel App is a simple web application that allows users to browse available excursions, add them to a cart and place an order.
+The project also includes an admin panel where excursions can be created, edited or removed from the database.
+
+The application communicates with a REST API created with JSON Server and uses Fetch API for asynchronous data operations.
+
+---
+
+## 🚀 Main Features
+
+### Client panel
+
+Users can:
+
+- browse available excursions
+- choose number of adults and children
+- add excursions to the cart
+- see total order price
+- remove excursions from the cart
+- submit an order with name and email
+- validate form data before sending
+
+### Admin panel
+
+Administrator can:
+
+- add new excursions
+- edit existing excursions
+- remove excursions from the database
+- update prices and descriptions
+
+All data is stored in a JSON Server database.
+
+---
+
+## 💡 Technologies
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
 
-# JavaScript: API oraz FETCH
+## 🔗 See also
 
-## Wprowadzenie
+Are you interested in **JavaScript and Frontend Development**?  
+See my other projects on my GitHub profile [here](https://github.com/satoshi300).
 
-Wracamy do naszego zlecenia związanego z wycieczkami. Chcemy przebudować kod, wykorzystując nowo poznane informacje.
+---
 
-Dzielimy naszą aplikację na dwie części. 
+## 💿 Installation
 
-### Client
+The project uses **Node.js**, **npm** and **JSON Server**.
 
-To część związana z tym, co może zrobić użytkownik:
-* wybrać wycieczkę przez wprowadzenie ilości zamawianych biletów w odpowiednie pola formularza i kliknięcie `dodaj do zamówienia`. Wiąże się to z:
-    * walidacją danych
-    * dodawaniem zamówienia do panelu z prawej strony, tj. do koszyka
-    * aktualizowaniem ceny za całość
-* potwierdzić zamówienie poprzez wprowadzenie imienia, nazwiska oraz adresu email do pola zamówienia i kliknięcie `zamawiam`. Wiąże się to z:
-    * walidacją danych
-    * wysłaniem zamówienia do bazy danych (u nas to będzie API uruchomione dzięki JSON Server)
-    * wyczyszczeniem koszyka.
+1. Clone or download the repository
+2. Install dependencies:
 
-Pliki powiązane:
-* `./src/index.html`
-* `./src/js/client.js`
-* `./src/css/client.css`
-
-### Admin    
-Panel zarządzania wycieczkami zapisanymi w bazie danych. Jego funkcjonalności to: 
-* dodawanie wycieczek
-* usuwanie wycieczek
-* modyfikowanie wycieczek.
-
-Pliki powiązane:
-* `./src/admin.html`
-* `./src/js/admin.js`
-* `./src/css/admin.css`
-
-## Implementacja
-
-### Webpack
-
-W tym zadaniu wykorzystamy webpacka, którego omawialiśmy w materiale dotyczącym ES2015+. 
-
-Zauważ, że posiada on dodatkową konfigurację, która obsługuje podział aplikacji na dwie części. Zwróć szczególną uwagę na tzw. [chunki](https://webpack.js.org/glossary/#c).
-
-Webpack zajmuje się również wczytaniem plików CSS (zobacz importy w `client.js` oraz `admin.js`) – dzieje się to dzięki odpowiednim loaderom dla plików o rozszerzeniu `.css` w `webpack.config.js`. Style są wczytywane do `<head>`, więc nie zdziw się, że pliki CSS nie są generowane.
-
-Pamiętaj, aby przed uruchomieniem webpacka zainstalować wszystkie zależności komendą
-```
+```bash
 npm install
 ```
-Potem dopiero możesz go uruchomić poprzez `npm start`.
+3. Run webpack development server:
 
-Jeśli chcesz odpalić wersję `client`, to wystarczy wpisać w przeglądarkę `http://localhost:8080/index.html`. Natomiast `admin` jest dostępny pod adresem: `http://localhost:8080/admin.html`.
-
-> **Uwaga!** Jeśli nie widzisz poprawnych numerów linii kodu dla błędów w konsoli, to prawdopodobnie nie masz włączonej obsługi source maps dla plików JavaScript. Możesz to zmienić w [ustawieniach przeglądarki Chrome](https://developer.chrome.com/docs/devtools/javascript/source-maps?hl=pl#enable_source_maps_in_settings).
-
-### JSON Server
-
-Podczas przerabiania materiałów zainstalowaliśmy globalnie JSON Server, dlatego teraz wystarczy, że go uruchomimy. Pamiętaj, że bez tego nasze API nie będzie działać. 
-
-Odpalamy kolejny terminal (webpack już jest uruchomiony w jednym) i przechodzimy do katalogu głównego z zadaniem. Następnie wpisujemy do terminala:
+```bash
+npm run start
 ```
+
+4. Run JSON Server in a second terminal:
+
+```bash
 json-server --watch ./data/excursions.json
 ```
 
-Od teraz API będzie dostępne pod adresem: http://localhost:3000. Zauważ jednak, że w pliku mamy dwa różne zasoby, czyli:
-* excursions
-* orders.
+5. Open:
 
-W zależności od tego, na jakich danych będziesz chciał pracować, do `fetch()` przekażesz inny URL, tj.:
-* http://localhost:3000/excursions – zarządzanie wycieczkami
-* http://localhost:3000/orders – zarządzanie zamówieniami.
+http://localhost:8080/index.html – client panel
 
-### Fetch
+http://localhost:8080/admin.html – admin panel
 
-Nasza komunikacja z uruchomionym API będzie się odbywać przy pomocy `fetch()`, który został opisany w materiałach tego modułu.
+---
 
-Choć `fetch()` jest [wspierany przez najnowsze przeglądarki](https://caniuse.com/#feat=fetch), to nie powinniśmy zapominać o wsparciu dla tych starszych.
+## 🤔 Solutions provided in the project
 
-W takim przypadku możemy wykorzystać tzw. [polyfill](https://pl.wikipedia.org/wiki/Polyfill), który doda niewspieraną przez przeglądarkę funkcjonalność.
+### 1. Fetch API communication
 
-Możesz do tego wykorzystać [whatwg-fetch](https://github.com/github/fetch).
+The application communicates with a local API created using JSON Server.
 
-### ExcursionsAPI
+```javascript
+fetch(this.excursionsUrl)
+    .then(resp => resp.json())
+```
 
-W katalogu `./src/js` znajdziesz plik `ExcursionsAPI.js`, który zawiera klasę o tej samej nazwie.
+This allows loading excursions dynamically from the database.
 
-Został on stworzony, aby przechowywać w jednym miejscu całą komunikację z API.
+### 2. Class based architecture
 
-To tutaj powinny być zdefiniowane metody, które odpytują API, np. pozwalają pobrać wycieczki z bazy lub je do niej dodać.
+The project separates responsibilities using classes.
 
-Ta klasa będzie używana zarówno po stronie `client`, jak i `admin`, dlatego też została już zaimportowana do obu plików JS odpowiedzialnych za każdą z części.
+| Class         | Responsibility                  |
+| ------------- | ------------------------------- |
+| Render        | rendering excursions to the DOM |
+| ExcursionsAPI | communication with API          |
+| Validator     | form validation                 |
 
-### Prototypy
 
-Zauważ, że w kodzie występują prototypy (`.*--prototype`). Są one używane tylko po to, aby ułatwić prezentację danych.
+```javascript
+const excursions = new ExcursionsAPI();
+excursions.loadData()
+```
 
-Docelowo mają być one niewidoczne – możesz je ukryć przy pomocy CSS (`display: none`). Warto je jednak wykorzystać do skopiowania struktury kodu HTML, aby nie musieć budować jej od podstaw w kodzie JS.
+### 3. Prototype element cloning
 
-## Podsumowanie
+Instead of creating DOM elements from scratch, the project uses hidden prototype HTML elements.
 
-Postaraj się wykonać to zadanie w taki sposób, aby zarządzanie wycieczkami było wygodne, a ich zamawianie intuicyjnie. 
+This approach allows:
 
-Miej cały czas z tyłu głowy, że może kiedyś nasz kod znów będzie trzeba przebudować lub wykorzystać w innym projekcie, dlatego powinien on być jak najbardziej elastyczny (zasada pojedynczej odpowiedzialności), a nazwy plików, klas i metod – dopasowane do zawartości i logiki działania tych elementów (tzw. [samodokumentujący się kod](https://en.wikipedia.org/wiki/Self-documenting_code)).
+- easier DOM manipulation
+- cleaner JavaScript code
+- faster rendering of elements
 
-Jeśli uznasz to za słuszne, możesz zmodyfikować kod HTML i CSS, aby zwiększyć funkcjonalność całego rozwiązania.
+```javascript
+const protoClone = protoEl.cloneNode(true);
+```
 
+### 4. Dynamic cart management
+
+The cart system allows users to:
+
+- add excursions
+- remove excursions
+- automatically calculate total price
+- update cart icon counter
+
+Example logic:
+
+```javascript
+const prices = document.querySelectorAll('.summary__item');
+let sum = 0;
+```
+
+### 5. Issue | Solution
+
+| Issue                         | Solution                   |
+| ----------------------------- | -------------------------- |
+| Rendering multiple excursions | cloning prototype elements |
+| API communication             | Fetch API with JSON Server |
+| Form validation               | custom Validator class     |
+| Cart price calculation        | dynamic DOM queries        |
+
+---
+
+## 💭 Conclusions for future projects
+
+During this project I learned how to:
+
+- communicate with REST APIs
+- work with Fetch API
+- structure JavaScript projects using classes
+- separate responsibilities in code
+- dynamically manipulate the DOM
+- implement basic form validation
+- manage application state using the DOM
+
+In the future I would like to improve:
+
+- UI design
+- implement a real backend instead of JSON Server
+- store cart data in localStorage
+
+---
+
+## 🙋‍♂️ Feel free to contact me
+If you like the project or have suggestions – feel free to reach out via [GitHub](https://github.com/satoshi300) or [LinkedIn](https://www.linkedin.com/in/michal-wasiak-457a5331/).
+
+---
 
 &nbsp;
 
-> ⭐ ***README** to coś więcej niż opis. Poprzez nie **pokazujesz swoje mocne strony** – swoją dokładność, sposób myślenia i podejście do rozwiązywania problemów. Niech Twoje README pokaże, że masz **świetne predyspozycje do rozwoju!***
-> 
-> 🎁 *Zacznij od razu. Skorzystaj z **[szablonu README i wskazówek](https://github.com/devmentor-pl/readme-template)**.* 
+## 👏 Thanks / Special thanks / Credits
+Thanks to my [Mentor - devmentor.pl](https://devmentor.pl/) – for providing me with this task and for code review.

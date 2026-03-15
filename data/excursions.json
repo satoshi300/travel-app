@@ -131,6 +131,50 @@
         }
       ],
       "id": 7
+    },
+    {
+      "clientName": "Michal",
+      "email": "michal.wasiak@hotmail.com",
+      "excursionsData": [
+        {
+          "name": "Zwiedzanie Krakowa",
+          "totalPrice": "300 PLN",
+          "details": "Dorośli: 3 x 100PLN dzieci: 0 x 25PLN"
+        },
+        {
+          "name": "Zwiedzanie Warszawy",
+          "totalPrice": "120 PLN",
+          "details": "Dorośli: 3 x 20PLN dzieci: 2 x 30PLN"
+        },
+        {
+          "name": "Zwiedzanie Brisbane",
+          "totalPrice": "148 PLN",
+          "details": "Dorośli: 1 x 99PLN dzieci: 1 x 49PLN"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "clientName": "Michal Wasiak",
+      "email": "michal.wasiak@hotmail.com",
+      "excursionsData": [
+        {
+          "name": "Zwiedzanie Krakowa",
+          "totalPrice": "300 PLN",
+          "details": "Dorośli: 3 x 100PLN dzieci: 0 x 25PLN"
+        },
+        {
+          "name": "Zwiedzanie Sunshine Coast",
+          "totalPrice": "315 PLN",
+          "details": "Dorośli: 3 x 75PLN dzieci: 3 x 30PLN"
+        },
+        {
+          "name": "Zwiedzanie Brisbane",
+          "totalPrice": "246 PLN",
+          "details": "Dorośli: 1 x 99PLN dzieci: 3 x 49PLN"
+        }
+      ],
+      "id": 9
     }
   ]
 }
