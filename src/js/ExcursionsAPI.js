@@ -18,7 +18,6 @@ class ExcursionsAPI {
         const data = {
             title: title.value, description: description.value, adultsPrice: Number(adultsPrice.value), childrenPrice: Number(childrenPrice.value), imageUrl: imageUrl.value
         };
-        console.log(data)
 
         const options = {
             method: 'POST',

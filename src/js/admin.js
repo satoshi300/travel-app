@@ -12,9 +12,6 @@ const apiExcUrl = 'http://localhost:3000/excursions';
 
 document.addEventListener('DOMContentLoaded', init);
 
-console.log('admin');
-
-
 const form = document.querySelector('.form');
 form.addEventListener('submit', (e) => {
     excursions.addExcursion(e)
@@ -22,7 +19,6 @@ form.addEventListener('submit', (e) => {
 
 
 function init() {
-    console.log('DOM');
     excursions.loadData()
         .then(data => {
             render.insertExcursionsAdmin(data);
@@ -32,7 +28,6 @@ function init() {
 
 function removeExcursions() {
     const ulEl = document.querySelector('.excursions');
-    // console.log(ulEl)
     ulEl.addEventListener('click', e => {
         e.preventDefault();
         const targetEl = e.target;
@@ -42,9 +37,6 @@ function removeExcursions() {
         const id = parentLiEl.dataset.id;
 
         if (e.target.className.includes('remove')) {
-            console.log('klikam w przycisk remove')
-
-            console.log(id)
             const options = { method: 'DELETE' };
             fetch(`${apiExcUrl}/${id}`, options)
                 .then(resp => console.log(resp))
@@ -57,7 +49,6 @@ function removeExcursions() {
             const adultsPrice = parentLiEl.querySelector('[name="adultsPrice"] strong');
             const childrenPrice = parentLiEl.querySelector('[name="childrenPrice"] strong');
             const imageUrl = parentLiEl.querySelector('[name="imageUrl"]')
-            console.log(imageUrl)
 
             const editableEls = [title, description, adultsPrice, childrenPrice, imageUrl]
             const allEditable = editableEls.every(el => el.isContentEditable);
@@ -87,7 +78,6 @@ function removeExcursions() {
             } else {
 
                 e.target.value = 'zapisz';
-                console.log('zmiana textu')
                 editableEls.forEach(
                     el => el.contentEditable = true
                 );

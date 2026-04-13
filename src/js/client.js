@@ -13,7 +13,6 @@ const excursions = new ExcursionsAPI();
 const apiOrdersUrl = 'http://localhost:3000/orders';
 
 function init() {
-    console.log('DOM');
     excursions.loadData()
         .then(data => {
             render.insertExcursionsClient(data);
@@ -27,11 +26,9 @@ const excursionsEl = document.querySelector('.excursions');
 excursionsEl.addEventListener('submit', addExcursionsToOrder);
 excursionsEl.addEventListener('submit', totalPriceExcursions);
 
-// usuniecie danych z "panel__order" "order__total-price" przy wczytaniu strony
 const orderTotalPriceEl = document.querySelector('.order__total-price-value');
 orderTotalPriceEl.textContent = '';
 
-// aktualizacja koszyka
 function updateCartIcon() {
     const items = document.querySelectorAll('.summary__item:not(.summary__item--prototype)');
     const countEl = document.querySelector('.cart-count');
@@ -39,7 +36,6 @@ function updateCartIcon() {
     countEl.textContent = items.length;
 }
 
-// walidacja formularza
 const formValidate = document.querySelector('.order');
 formValidate.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -56,7 +52,6 @@ formValidate.addEventListener('submit', (e) => {
     } else if (errors.length > 0) {
         const sectionPanel = document.querySelector('.panel__form');
         const panelOrderEl = sectionPanel.querySelector('form:first-child')
-        console.log(panelOrderEl)
 
         e.preventDefault();
 

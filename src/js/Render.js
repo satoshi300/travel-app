@@ -21,8 +21,6 @@ class Render {
 
                 this.ulEl.appendChild(protoClone)
                 protoClone.classList.remove('excursions__item--prototype');
-
-                console.log(protoClone)
             })
         }
     };
@@ -40,7 +38,6 @@ class Render {
                 if (figureEl) {
                     const img = document.createElement('img');
                     img.src = item.imageUrl;
-                    console.log(img)
                     figureEl.appendChild(img);
                 }
 
